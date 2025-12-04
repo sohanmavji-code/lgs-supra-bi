@@ -1,6 +1,6 @@
 # Basic Superset config for demo / Supra BI
 
-SECRET_KEY = "lgs_demo_secret_key"
+SECRET_KEY = "Ae49m!sdf9_29kLm!k32L9sdf9@3Kslf93lskf09!dfy"
 
 FEATURE_FLAGS = {
     "ENABLE_TEMPLATE_PROCESSING": True,
