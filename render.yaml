@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: supra-bi
+    env: docker
+    plan: free
+    branch: main
+    rootDir: .
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: SUPERSET_SECRET_KEY
+        value: demo_key_change_later
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        value: admin
+      - key: PORT
+        value: 8088
