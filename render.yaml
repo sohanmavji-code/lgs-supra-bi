@@ -8,14 +8,14 @@ services:
     dockerfilePath: Dockerfile
     rootDir: .
     autoDeploy: true
-    envVars:
-      - key: SUPERSET_SECRET_KEY
-        value: "SDFJ93sdjf93SDf9sdF934jsdf93JSDF934jsdf!"
-      - key: SECRET_KEY
-        value: "SDFJ93sdjf93SDf9sdF934jsdf93JSDF934jsdf!"
-      - key: ADMIN_USERNAME
-        value: admin
-      - key: ADMIN_PASSWORD
-        value: admin
-      - key: PORT
-        value: "8088"
+   envVars:
+  - key: SECRET_KEY
+    value: "JSD8f8sdF9sdF9sdf9@3JSDf93JDSF934JSDf9!"
+  - key: SUPERSET_SECRET_KEY
+    value: "JSD8f8sdF9sdF9sdf9@3JSDf93JDSF934JSDf9!"
+  - key: ADMIN_USERNAME
+    value: admin
+  - key: ADMIN_PASSWORD
+    value: admin
+  - key: PORT
+    value: "8088"
