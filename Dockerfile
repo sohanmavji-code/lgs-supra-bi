@@ -1,17 +1,27 @@
 FROM apache/superset:latest
 
+USER root
+
+# Upgrade pip
+RUN pip install --upgrade pip
+
 # Superset home directory
 ENV SUPERSET_HOME=/app/superset_home
+RUN mkdir -p /app/superset_home && chown -R superset:superset /app/superset_home
 
-# Switch to root
-USER root
-RUN mkdir -p /app/superset_home
-RUN chown -R superset:superset /app/superset_home
-
-# Copy your custom Superset config
+# Copy Superset config
 COPY superset_config.py /app/pythonpath/superset_config.py
 
 USER superset
 
-# Start the server
-ENTRYPOINT ["/usr/bin/run-server.sh"]
+# Initialize Superset on container start
+# This creates admin user + initializes DB automatically
+CMD superset db upgrade && \
+    superset fab create-admin \
+      --username ${ADMIN_USERNAME:-admin} \
+      --password ${ADMIN_PASSWORD:-admin} \
+      --firstname Admin \
+      --lastname User \
+      --email admin@lgs.com && \
+    superset init && \
+    /usr/bin/run-server.sh
