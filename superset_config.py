@@ -1,12 +1,16 @@
-# Basic Superset config for demo / Supra BI
+import os
 
-SECRET_KEY = "Ae49m!sdf9_29kLm!k32L9sdf9@3Kslf93lskf09!dfy"
+# Load secret key from environment variables
+SECRET_KEY = (
+    os.environ.get("SUPERSET_SECRET_KEY")
+    or os.environ.get("SECRET_KEY")
+    or "fallback_key_that_wont_be_used"
+)
 
+# Required for Render reverse-proxy
+ENABLE_PROXY_FIX = True
+
+# Minimal config
 FEATURE_FLAGS = {
     "ENABLE_TEMPLATE_PROCESSING": True,
 }
-
-# Ensure Superset works properly behind a proxy (Render)
-ENABLE_PROXY_FIX = True
-
-# Later, you could add theme-related config here if needed.
