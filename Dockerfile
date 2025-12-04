@@ -15,7 +15,6 @@ COPY superset_config.py /app/pythonpath/superset_config.py
 USER superset
 
 # Initialize Superset on container start
-# This creates admin user + initializes DB automatically
 CMD superset db upgrade && \
     superset fab create-admin \
       --username ${ADMIN_USERNAME:-admin} \
